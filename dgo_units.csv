@@ -1,2 +1,3 @@
-Grafana ID,Serial Number,Tailscale ID,Status
-O2-PVT-DGO-1,MG52411A2US0C0000,o2-pvt-dgo-1,active
+Grafana ID,Serial Number,Tailscale ID,Status,Tare Weight
+O2-PVT-DGO-1,MG52411A2US0C0000,o2-pvt-dgo-1,active,26.86
+O2-PVT-DGO-2,MG52411A2US0C0008,o2-pvt-dgo-2,active,26.766
