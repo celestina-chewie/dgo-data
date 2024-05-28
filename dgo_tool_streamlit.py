@@ -83,7 +83,7 @@ with st.sidebar:
         # st.selectbox("Food Input")
         with st.form("Data:", clear_on_submit=True):
             recipes = pd.read_csv("./recipes.csv")
-            #Show input variables
+            # Show input variables
             # inputs = {'pre_feed_mass':[], 'added_dry':[], 'added_wet':[], 'post_feed_mass':[], 'mc':[]}
             pre_feed_mass = st.number_input("Pre-Feeding Mass (kg):")
             added_dry = st.number_input("Added Dry FG Mass (kg):")
@@ -102,10 +102,11 @@ with st.sidebar:
             # prev_mc = dgo_data["Moisture Content"].where(dgo_data["Unit"].equals(pick_unit) and dgo_data["Date"].equals(date.today()-timedelta(days=1)))
             with tab1:
                 st.dataframe(dgo_data)
-            
-            prev_mc = dgo_data[dgo_data["Unit"] == pick_unit].iloc[:][dgo_data["Date"] == str(date.today()-timedelta(days=1))].iloc[0]["Moisture Content"]
+                # dgo_data["Date"] = pd.to_datetime(dgo_data["Date"])
+                # 
+                prev_mc = dgo_data[dgo_data["Unit"] == pick_unit].iloc[:][dgo_data["Date"] == dgo_data["Date"].max()].iloc[0]["Moisture Content"]
 
-            print(dry_mc)
+            # equations to calculate stuff
             post_feed_food_mass = post_feed_mass - unit_tare_weight
             post_feed_wet_mc = (added_dry*dry_mc + added_wet*wet_mc + (prev_mc/100 * (pre_feed_mass-unit_tare_weight)) / post_feed_food_mass)
 
